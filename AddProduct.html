@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md mb-4 sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img src="images/download2.png" height="50" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse justify-content-end navbar-collapse"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#aboutus">AboutUs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contactus">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="cart.html">Cart</a>
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                id="sendMessage"
+                class="btn btn-outline-light"
+              >
+                Send Message
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <h1>Add New Product</h1>
+      <form>
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Title</label
+              >
+              <input
+                id="title"
+                type="text"
+                class="form-control"
+                placeholder="Title"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-md">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Price</label
+              >
+              <input
+                id="price"
+                type="number"
+                class="form-control"
+                placeholder="Price"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-md">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Stock</label
+              >
+              <input
+                id="stock"
+                type="number"
+                class="form-control"
+                placeholder="Stock"
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-md">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Status</label
+            >
+            <select
+              id="status"
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Description</label
+              >
+              <textarea
+                id="desc"
+                type="number"
+                class="form-control"
+                placeholder="Stock"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="mb-3">
+              <label for="formFileMultiple" class="form-label">Images</label>
+              <input
+                id="image"
+                class="form-control"
+                type="file"
+                id="formFileMultiple"
+                multiple
+              />
+            </div>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-dark" type="button">
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- footer -->
+    <section class="container-fluid text-center mt-4" id="footer">
+      <img src="images/download2.png" width="100" alt="" />
+      <div class="container p-4">
+        <h1>Amit Python Web 5</h1>
+        <p class="container mb-0">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+          deleniti cupiditate perspiciatis autem accusantium iusto saepe qui.
+          Quasi accusamus voluptates itaque dolorem magni! Iste natus amet
+          tempore nesciunt voluptates sit.
+        </p>
+      </div>
+    </section>
+  </body>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</html>
+
+<script>
+  let AllProducts = JSON.parse(localStorage.getItem("products"));
+  console.log(AllProducts);
+  let title = document.querySelector('input[id="title"]');
+  let desc = document.querySelector('textarea[id="desc"]');
+  let price = document.querySelector('input[id="price"]');
+  let images = document.querySelector('input[id="image"]');
+  let submit = document.querySelector("button[type='submit']");
+  console.log(AllProducts);
+  submit.addEventListener("click", addProduct);
+  function addProduct() {
+    if (title.value != "" && desc.value != "" && price.value != "") {
+      event.preventDefault();
+      console.log(images.files);
+      console.log(Object.values(images.files)[0].name);
+
+      let arr = Object.values(images.files);
+      arr = arr.map((i) => `images/products/${i["name"]}`);
+      let NewProduct = {
+        id: AllProducts.length + 1,
+        title: title.value,
+        images: arr,
+        description: desc.value,
+        price: price.value,
+      };
+      AllProducts.push(NewProduct);
+      localStorage.setItem("products", JSON.stringify(AllProducts));
+    } else {
+      event.preventDefault();
+      console.log(images.files);
+      console.log(
+        Object.values(images.files).map((i) => `images/products/${i.name}`)
+      );
+    }
+  }
+</script>

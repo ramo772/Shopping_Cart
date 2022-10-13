@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css" />
+    <style>
+      /* ddd */
+      .img-thumbnail {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md mb-4 sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img src="images/download2.png" height="50" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse justify-content-end navbar-collapse"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="Products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#aboutus">AboutUs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contactus">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="cart.html">Cart</a>
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                id="sendMessage"
+                class="btn btn-outline-light"
+              >
+                Send Message
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="alert alert-success container-fluid d-none" role="alert"></div>
+    <table class="table table-bordered ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price</th>
+          <th scope="col">Remove Product</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Remove Product
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modal-body">Do you want to remove</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              id="RemoveButton"
+              class="btn btn-danger"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="cart.js"></script>
+  </body>
+</html>
